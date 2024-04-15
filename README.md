@@ -1,5 +1,5 @@
 # CSC 4710 Final Project
-# Online Book Store
+## Online Book Store
 This is our CSC 4710 final project :)
 
 ### Admin User
