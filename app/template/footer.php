@@ -4,7 +4,7 @@
 			<div class="container">
 				<div class="d-flex justify-content-between">
 					<div class="">
-						<a href="https://sourcecodester.com" target="_blank" class="text-decoration-none text-muted fw-bold"> CSC 4710 Online Book Stores Site - Rhea Sridhar &copy; <?= date('Y') ?> </a>
+						<a href="https://sourcecodester.com" target="_blank" class="text-decoration-none text-muted fw-bold"> CSC 4710 Online Book Store Site &copy; <?= date('Y') ?> </a>
 					</div>
 					<div class="">
 						<a href="admin.php" class="text-decoration-none text-dark fw-bolder">Login as Admin</a>

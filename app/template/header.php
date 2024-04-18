@@ -19,6 +19,28 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script type="text/javascript" src="./bootstrap/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="./bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      .navbar {
+        height: 60px; /* Set the height of the navbar */
+      }
+
+      .navbar-brand,
+      .nav-link {
+        font-size: 20px; /* Set the font size of the navbar items */
+        color: white !important; /* Set the font color to white */
+      }
+
+      .navbar-toggler-icon,
+      .fa {
+        color: white !important; /* Set the font and icon color to white */
+      }
+
+      .jumbotron-heading {
+        font-size: 40px; /* Reduce the font size of the welcome message */
+        color: #2C8E5D; /* Set the font color */
+      }
+    </style>
   </head>
 
   <body>
@@ -35,21 +57,17 @@
         <!--/.navbar-collapse -->
         <div class="collapse navbar-collapse" id="topNav">
           <ul class="nav navbar-nav">
-          <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] == true): ?>
-  <li class="nav-item"><a class="nav-link" href="admin_book.php"><span class="fa fa-th-list"></span> Book List</a></li>
-  <li class="nav-item"><a class="nav-link" href="admin_add.php"><span class="far fa-plus-square"></span> Add New Book</a></li>
-  <li class="nav-item"><a class="nav-link" href="admin_orders.php"><span class="fa fa-shopping-cart"></span> Orders</a></li> <!-- Added link to admin_orders.php -->
-  <li class="nav-item"><a class="nav-link" href="admin_signout.php"><span class="fa fa-sign-out-alt"></span> Logout</a></li>
-<?php else: ?>
-
-              <!-- link to publiser_list.php -->
+            <?php if(isset($_SESSION['admin']) && $_SESSION['admin'] == true): ?>
+              <li class="nav-item"><a class="nav-link" href="admin_book.php"><span class="fa fa-th-list"></span> Book List</a></li>
+              <li class="nav-item"><a class="nav-link" href="admin_add.php"><span class="far fa-plus-square"></span> Add New Book</a></li>
+              <li class="nav-item"><a class="nav-link" href="admin_orders.php"><span class="fa fa-shopping-cart"></span> Orders</a></li>
+              <li class="nav-item"><a class="nav-link" href="admin_signout.php"><span class="fa fa-sign-out-alt"></span> Logout</a></li>
+            <?php else: ?>
               <li class="nav-item"><a class="nav-link" href="publisher_list.php"><span class="fa fa-paperclip"></span> Publisher</a></li>
-              <!-- link to books.php -->
               <li class="nav-item"><a class="nav-link" href="books.php"><span class="fa fa-book"></span> Books</a></li>
-              <!-- link to shopping cart -->
               <li class="nav-item"><a class="nav-link" href="cart.php"><span class="fa fa-shopping-cart"></span> My Cart</a></li>
             <?php endif; ?>
-            </ul>
+          </ul>
         </div>
       </div>
     </nav>
@@ -58,7 +76,7 @@
     ?>
     <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="container">
-        <h1>Welcome to CSC 4710 Online Book Store</h1>
+        <h1 class="jumbotron-heading">Welcome, Rhea</h1>
         <hr>
       </div>
     <?php } ?>

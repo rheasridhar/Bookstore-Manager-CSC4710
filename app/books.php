@@ -36,7 +36,7 @@
 <!-- Search form -->
 <form class="row mb-3 justify-content-center" action="" method="GET">
   <div class="col-auto">
-    <input type="text" class="form-control rounded-pill" name="search" placeholder="Search Books" style="font-weight: bold;">
+    <input type="text" class="form-control rounded-pill" name="search" placeholder="Search Books">
   </div>
   <div class="col-auto">
     <button type="submit" class="btn btn-success rounded-pill">Search</button>

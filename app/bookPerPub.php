@@ -54,7 +54,7 @@
 			<h4><?php echo $row['book_title'];?></h4>
 			<hr>
 			<p class="truncate-5"><?= $row['book_descr'] ?></p>
-			<a href="book.php?bookisbn=<?php echo $row['book_isbn'];?>" class="btn btn-primary">Get Details</a>
+			<a href="book.php?bookisbn=<?php echo $row['book_isbn'];?>" class="btn btn-success">Get Details</a>
 		</div>
 	</div>
 <?php

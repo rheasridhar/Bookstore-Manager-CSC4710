@@ -1,19 +1,12 @@
 <?php
-// Debug statements
-echo "Book ISBN: " . $_GET['bookisbn'] . "<br>";
-echo "User ID: " . $_SESSION['user_id'] . "<br>";
-
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    $_SESSION['user_id'] = uniqid('user_');
-}
+require_once "./functions/database_functions.php";
 
 // Connect to database
-require_once "./functions/database_functions.php";
 $conn = db_connect();
 
 // Check if a rating is submitted
-if (isset($_POST['rating']) && isset($_POST['bookisbn'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['rating']) && isset($_POST['bookisbn'])) {
     $rating = mysqli_real_escape_string($conn, $_POST['rating']);
     $bookisbn = mysqli_real_escape_string($conn, $_POST['bookisbn']);
     $user_id = $_SESSION['user_id']; // User identifier
@@ -45,10 +38,11 @@ if (!$result) {
 }
 $average_rating = mysqli_fetch_assoc($result)['average_rating'];
 
-// Display book information and rating form
-// Your HTML code goes here...
+// Close database connection
+if (isset($conn)) {
+    mysqli_close($conn);
+}
 ?>
-
 
 <!-- Display book information -->
 
@@ -56,7 +50,7 @@ $average_rating = mysqli_fetch_assoc($result)['average_rating'];
 <div> Average Rating: <?php echo round($average_rating, 1); ?> </div>
 
 <!-- Rating form -->
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+<form id="ratingForm" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
   <label for="rating">Give a rating:</label>
   <select name="rating" id="rating">
     <option value="1">1 Star</option>
@@ -65,13 +59,22 @@ $average_rating = mysqli_fetch_assoc($result)['average_rating'];
     <option value="4">4 Stars</option>
     <option value="5">5 Stars</option>
   </select>
-  <input type="submit" value="Submit Rating" disabled> <!-- Add disabled attribute here -->
+  <input type="submit" value="Submit Rating">
 </form>
 
+<!-- Success message -->
+<div id="successMessage" class="success-banner" style="display: none;">Rating submitted successfully!</div>
 
-<?php
-// Close database connection
-if (isset($conn)) {
-    mysqli_close($conn);
-}
-?>
+<script>
+document.getElementById("ratingForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form submission
+  // Show success message
+  document.getElementById('successMessage').style.display = 'block';
+  // Reset form fields (optional)
+  document.getElementById('rating').selectedIndex = 0;
+  // Hide success message after 2 seconds
+  setTimeout(function() {
+    document.getElementById('successMessage').style.display = 'none';
+  }, 2000); // 2000 milliseconds = 2 seconds
+});
+</script>
