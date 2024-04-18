@@ -6,5 +6,3 @@ This is our CSC 4710 final project :)
 - **username**: admin
 - **password**: admin123
 
-# Contributers
-Rhea Sridhar
